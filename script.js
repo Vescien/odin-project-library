@@ -6,44 +6,29 @@ const pages = document.querySelector("#pages");
 const addBook = document.querySelector(".add-book");
 const shelf = document.querySelector(".shelf");
 
-add.addEventListener("click", () => {
-    form.style.display = "block";
-})
-
-document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-        form.style.display = "none";
-    }
-})
-
-addBook.addEventListener("click", (event) => {
-    event.preventDefault();
-    if (title.value && author.value && pages.value) {
-        addBookToLibrary(title.value, author.value, pages.value);
-        displayBook(title.value, author.value, pages.value);
-        form.style.display = "none";
-    }
-})
-
 const myLibrary = [
     { title: 'The Hobbit', author: 'J. R. R. Tolkien', pages: '200' },
     { title: 'A Song of Ice and Fire', author: 'George R. R. Martin', pages: '300' },
  ];
 
-function Book(title, author, pages) {
+function Book(title, author, pages, id) {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.id = id;
 }
 
-function addBookToLibrary(title, author, pages) {
-    const book = new Book(title, author, pages);
+function addBookToLibrary(title, author, pages, id) {
+    const book = new Book(title, author, pages, id);
     myLibrary.push(book);
     console.log(myLibrary);
 }
 
 function getBook(library) {
     for (const book of library) {
+        if (!book.id) {
+            book.id = crypto.randomUUID();
+        }
         displayBook(book.title, book.author, book.pages);
     }
 }
@@ -73,8 +58,26 @@ function displayBook(title, author, pages) {
     shelf.appendChild(book);
 }
 
-getBook(myLibrary);
+add.addEventListener("click", () => {
+    form.style.display = "block";
+})
 
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        form.style.display = "none";
+    }
+})
+
+addBook.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (title.value && author.value && pages.value) {
+        addBookToLibrary(title.value, author.value, pages.value, crypto.randomUUID());
+        displayBook(title.value, author.value, pages.value);
+        form.style.display = "none";
+    }
+})
+
+getBook(myLibrary);
 
 
 
