@@ -30,16 +30,6 @@ body {
 h1,
 h2,
 h3,
-h4,
-button,
-input,
-label {
-    line-height: 1.1;
-}
-
-h1,
-h2,
-h3,
 h4 {
     text-wrap: balance;
 }
@@ -64,6 +54,11 @@ textarea:not([rows]) {
     scroll-margin-block: 5ex;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
 header {
     display: flex;
     align-items: center;
@@ -72,7 +67,6 @@ header {
     gap: 1rem;
     color: #ffffff;
     background-color: #374151;
-    
 }
 
 header h1 {
@@ -82,4 +76,22 @@ header h1 {
 header svg {
     fill: #ffffff;
     height: 2rem;
+}
+
+.shelf {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 140px);
+    margin: 4rem;
+    gap: 2rem;
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0.5rem;
+    height: 220px;
+    width: 140px;
+    border: 2px solid black;
+    overflow: hidden;
 }
