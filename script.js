@@ -25,7 +25,10 @@ addBook.addEventListener("click", (event) => {
     }
 })
 
-const myLibrary = [];
+const myLibrary = [
+    { title: 'The Hobbit', author: 'J. R. R. Tolkien', pages: '200' },
+    { title: 'A Song of Ice and Fire', author: 'George R. R. Martin', pages: '300' },
+ ];
 
 function Book(title, author, pages) {
     this.title = title;
@@ -36,6 +39,13 @@ function Book(title, author, pages) {
 function addBookToLibrary(title, author, pages) {
     const book = new Book(title, author, pages);
     myLibrary.push(book);
+    console.log(myLibrary);
+}
+
+function getBook(library) {
+    for (const book of library) {
+        displayBook(book.title, book.author, book.pages);
+    }
 }
 
 function displayBook(title, author, pages) {
@@ -63,7 +73,7 @@ function displayBook(title, author, pages) {
     shelf.appendChild(book);
 }
 
-
+getBook(myLibrary);
 
 
 
