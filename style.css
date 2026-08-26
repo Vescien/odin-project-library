@@ -63,3 +63,23 @@ textarea:not([rows]) {
 :target {
     scroll-margin-block: 5ex;
 }
+
+header {
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    padding: 0 1rem;
+    gap: 1rem;
+    color: #ffffff;
+    background-color: #374151;
+    
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+header svg {
+    fill: #ffffff;
+    height: 2rem;
+}
