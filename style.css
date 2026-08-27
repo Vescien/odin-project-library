@@ -85,15 +85,36 @@ header svg {
     gap: 2rem;
 }
 
+.book-container {
+    position: relative;
+}
+
 .book {
-    display: flex;
-    flex-direction: column;
     text-align: center;
     padding: 0.5rem;
     height: 220px;
     width: 140px;
     border: 2px solid black;
     overflow: hidden;
+}
+
+.delete {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    background-color:#ffffff;
+    border: none;
+    border-radius: 50%;
+    transition: 300ms;
+}
+
+.delete:hover {
+    transform: scale(1.2);
+}
+
+.delete svg {
+    height: 1.5rem;
+    fill: #ff3f3f;
 }
 
 .form-container {
