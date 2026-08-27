@@ -5,10 +5,11 @@ const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 const addBook = document.querySelector(".add-book");
 const shelf = document.querySelector(".shelf");
+const deleteButton = document.querySelector(".delete");
 
 const myLibrary = [
-    { title: 'The Hobbit', author: 'J. R. R. Tolkien', pages: '200' },
-    { title: 'A Song of Ice and Fire', author: 'George R. R. Martin', pages: '300' },
+    { title: 'The Hobbit', author: 'J. R. R. Tolkien', pages: '200', id: '17a29217-a893-4072-a656-2b5df81e6c4f' },
+    { title: 'A Song of Ice and Fire', author: 'George R. R. Martin', pages: '300', id: 'cc39c743-221b-4a3e-8d99-6f6cdd243563' },
  ];
 
 function Book(title, author, pages, id) {
@@ -26,19 +27,16 @@ function addBookToLibrary(title, author, pages, id) {
 
 function getBook(library) {
     for (const book of library) {
-        if (!book.id) {
-            book.id = crypto.randomUUID();
-        }
-        displayBook(book.title, book.author, book.pages);
+        displayBook(book.title, book.author, book.pages, book.id);
     }
 }
 
-function displayBook(title, author, pages) {
+function displayBook(title, author, pages, id) {
     const bookContainer = document.createElement("div");
     const book = document.createElement("div");
     bookContainer.classList.add("book-container");
     book.classList.add("book");
-
+    bookContainer.dataset.id = id;
 
     const headerTitle = document.createElement("p");
     const headerAuthor = document.createElement("p");
@@ -64,6 +62,7 @@ function displayBook(title, author, pages) {
     bookContainer.append(deleteBtn);
     
     shelf.appendChild(bookContainer);
+    console.log(id);
 }
 
 add.addEventListener("click", () => {
@@ -79,13 +78,31 @@ document.addEventListener("keydown", (event) => {
 addBook.addEventListener("click", (event) => {
     event.preventDefault();
     if (title.value && author.value && pages.value) {
-        addBookToLibrary(title.value, author.value, pages.value, crypto.randomUUID());
-        displayBook(title.value, author.value, pages.value);
+        let newID = crypto.randomUUID();
+        addBookToLibrary(title.value, author.value, pages.value, newID);
+        displayBook(title.value, author.value, pages.value, newID);
         form.style.display = "none";
     }
 })
 
+shelf.addEventListener("click", (event) => {
+    const isDeleteButton = event.target.closest(".delete");
+    if (isDeleteButton) {
+        const bookToRemove = isDeleteButton.closest(".book-container");
+        const idToFind = bookToRemove.dataset.id;
+        const targetIndex = myLibrary.findIndex((item) => {
+            return item.id === idToFind;
+        })
+        console.log(targetIndex);
+        myLibrary.splice(targetIndex, 1);
+        bookToRemove.remove();
+        console.log(myLibrary);
+    }
+    
+});
+
 getBook(myLibrary);
+console.log(myLibrary);
 
 
 
