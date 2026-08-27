@@ -5,6 +5,7 @@ const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 const addBook = document.querySelector(".add-book");
 const shelf = document.querySelector(".shelf");
+const formInputs = document.querySelector("form");
 
 const myLibrary = [
     { title: 'The Hobbit', author: 'J. R. R. Tolkien', pages: '200', id: '17a29217-a893-4072-a656-2b5df81e6c4f' },
@@ -60,6 +61,7 @@ add.addEventListener("click", () => {
 form.addEventListener("click", (event) => {
     const isCloseButton = event.target.closest(".close-form");
     if (isCloseButton) {
+        formInputs.reset();
         form.style.display = "none";
     }
 })
@@ -70,6 +72,7 @@ addBook.addEventListener("click", (event) => {
         let newID = crypto.randomUUID();
         addBookToLibrary(title.value, author.value, pages.value, newID);
         displayBook(title.value, author.value, pages.value, newID);
+        formInputs.reset();
         form.style.display = "none";
     }
 })
