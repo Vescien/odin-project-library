@@ -76,6 +76,11 @@ header h1 {
 header svg {
     fill: #ffffff;
     height: 2rem;
+    transition: 300ms;
+}
+
+header svg:hover {
+    transform: scale(1.2);
 }
 
 .shelf {
@@ -87,6 +92,20 @@ header svg {
 
 .book-container {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    width: 160px;
+    height: 240px;
+}
+
+.book-container .delete {
+    display: none;
+}
+
+.book-container:hover .delete {
+    display: block;
 }
 
 .book {
@@ -100,8 +119,8 @@ header svg {
 
 .delete {
     position: absolute;
-    right: -10px;
-    top: -10px;
+    right: 0;
+    top: 0;
     background-color:#ffffff;
     border: none;
     border-radius: 50%;
