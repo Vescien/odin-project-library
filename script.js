@@ -69,8 +69,9 @@ add.addEventListener("click", () => {
     form.style.display = "block";
 })
 
-document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
+form.addEventListener("click", (event) => {
+    const isCloseButton = event.target.closest(".close-form");
+    if (isCloseButton) {
         form.style.display = "none";
     }
 })

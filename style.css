@@ -117,7 +117,8 @@ header svg:hover {
     overflow: hidden;
 }
 
-.delete {
+.delete,
+.close-form {
     position: absolute;
     right: 0;
     top: 0;
@@ -143,6 +144,20 @@ header svg:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #ffffff;
+}
+
+.close-form {
+    right: 5px;
+    top: 5px;
+}
+
+.close-form:hover {
+    transform: scale(1.2);
+}
+
+.close-form svg {
+    height: 1.5rem;
+    fill: #000000;
 }
 
 form {
