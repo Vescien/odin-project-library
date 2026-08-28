@@ -25,6 +25,7 @@ ol[role='list'] {
 body {
     min-height: 100vh;
     line-height: 1.5;
+    background-color: #E2E8F0;
 }
 
 h1,
@@ -34,9 +35,9 @@ h4 {
     text-wrap: balance;
 }
 
-a:not([class]) {
-    text-decoration-skip-ink: auto;
-    color: currentColor;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 img,
@@ -69,17 +70,28 @@ header {
     background-color: #374151;
 }
 
+.header-handle {
+    display: flex;
+}
+
+.header-logo {
+    height: 3rem;
+}
+
 header h1 {
     font-size: 2rem;
 }
 
-header svg {
-    fill: #ffffff;
+.header-icon {
     height: 2rem;
     transition: 300ms;
 }
 
-header svg:hover {
+header svg {
+    fill: #ffffff;
+}
+
+.header-icon:hover {
     transform: scale(1.2);
 }
 
@@ -96,9 +108,8 @@ header svg:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid black; */
-    width: 160px;
     height: 240px;
+    box-shadow: 0 0 6px 4px rgba(0, 0, 0, 0.2);
 }
 
 .book-container .delete {
@@ -114,8 +125,12 @@ header svg:hover {
     padding: 0.5rem;
     height: 220px;
     width: 140px;
-    border: 2px solid black;
     overflow: hidden;
+    background-color: #ffffff;
+}
+
+.book-text {
+    font-weight: 600;
 }
 
 .checkbox-container {
@@ -123,8 +138,6 @@ header svg:hover {
     justify-content: center;
     gap: 0.5rem;
     width: 140px;
-    border: 2px solid black;
-    border-top: none;
     transition: 300ms;
 }
 
@@ -168,7 +181,7 @@ header svg:hover {
 .delete,
 .close-form {
     position: absolute;
-    right: 0;
+    right: -10px;
     top: -10px;
     background-color:#ffffff;
     border: none;
