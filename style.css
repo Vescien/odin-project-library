@@ -93,6 +93,7 @@ header svg:hover {
 .book-container {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     /* border: 1px solid black; */
@@ -117,11 +118,58 @@ header svg:hover {
     overflow: hidden;
 }
 
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 140px;
+    border: 2px solid black;
+    border-top: none;
+    transition: 300ms;
+}
+
+.checkbox-container input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-container:has(.read:not(:checked)) {
+    background-color: #ff1010;
+}
+
+.checkbox-container:has(.read:checked) {
+    background-color: #00ff40;
+}
+
+.icon-unchecked {
+    font-weight: bold;
+}
+
+.icon-checked {
+    display: none;
+}
+
+.read:checked~.button-label .icon-unchecked {
+    display: none;
+}
+
+.read:checked~.button-label .icon-checked {
+    display: block;
+}
+
+.checkbox-container svg {
+    height: 1.5rem;
+}
+
+.delete:hover,
+.checkbox-container:hover {
+    cursor: pointer;
+}
+
 .delete,
 .close-form {
     position: absolute;
     right: 0;
-    top: 0;
+    top: -10px;
     background-color:#ffffff;
     border: none;
     border-radius: 50%;
@@ -193,4 +241,6 @@ form button {
     border: none;
     border-radius: 6px;
 }
+
+
 
