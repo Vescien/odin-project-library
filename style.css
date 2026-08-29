@@ -133,40 +133,22 @@ header svg {
     font-weight: 600;
 }
 
-.checkbox-container {
+.status-container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    font-weight: 700;
     gap: 0.5rem;
     width: 140px;
+    height: 2rem;
     transition: 300ms;
 }
 
-.checkbox-container input[type="checkbox"] {
-    display: none;
+.status-container svg {
+    height: 1.5rem;
 }
-
-.checkbox-container:has(.read:not(:checked)) {
-    background-color: #ff1010;
-}
-
-.checkbox-container:has(.read:checked) {
-    background-color: #00ff40;
-}
-
-.icon-unchecked {
-    font-weight: bold;
-}
-
-.icon-checked {
-    display: none;
-}
-
-.read:checked~.button-label .icon-unchecked {
-    display: none;
-}
-
-.read:checked~.button-label .icon-checked {
-    display: block;
+.status-container:hover {
+    cursor: pointer;
 }
 
 .checkbox-container svg {
