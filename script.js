@@ -39,11 +39,6 @@ function displayBook(book) {
     const bookLayout = document.createElement("div");
     const statusContainer = document.createElement("div");
     const deleteBtn = document.createElement("button");
-    bookContainer.classList.add("book-container");
-    bookLayout.classList.add("book");
-    statusContainer.classList.add("status-container");
-    deleteBtn.classList.add("delete");
-
     const headerTitle = document.createElement("p");
     const headerAuthor = document.createElement("p");
     const headerPages = document.createElement("p");
@@ -51,6 +46,10 @@ function displayBook(book) {
     const bookAuthor = document.createElement("p");
     const bookPages = document.createElement("p");
 
+    bookContainer.classList.add("book-container");
+    bookLayout.classList.add("book");
+    statusContainer.classList.add("status-container");
+    deleteBtn.classList.add("delete");
     headerTitle.textContent = "Title";
     headerAuthor.textContent = "Author";
     headerPages.textContent = "Pages";
@@ -67,14 +66,14 @@ function displayBook(book) {
         statusContainer.innerHTML = bookStatusStyle(statusContainer, book.status);
     });
 
-    bookLayout.append(headerTitle, bookTitle, document.createElement("hr"));
-    bookLayout.append(headerAuthor, bookAuthor, document.createElement("hr"));
-    bookLayout.append(headerPages, bookPages);
-    bookContainer.append(bookLayout);
-    bookContainer.append(deleteBtn);
-    bookContainer.append(statusContainer);
+    bookLayout.append(
+        headerTitle, bookTitle, document.createElement("hr"),
+        headerAuthor, bookAuthor, document.createElement("hr"),
+        headerPages, bookPages
+     );
 
-    shelf.appendChild(bookContainer);
+    bookContainer.append(bookLayout, deleteBtn, statusContainer);
+    shelf.append(bookContainer);
 }
 
 function bookStatusStyle(statusContainer, formStatus) {
@@ -89,6 +88,7 @@ function bookStatusStyle(statusContainer, formStatus) {
 
 add.addEventListener("click", () => {
     form.style.display = "block";
+    title.focus();
 })
 
 form.addEventListener("click", (event) => {
@@ -99,8 +99,7 @@ form.addEventListener("click", (event) => {
     }
 })
 
-addBook.addEventListener("click", (event) => {
-    event.preventDefault();
+addBook.addEventListener("click", () => {
     if (title.value && author.value && pages.value) {
         let newID = crypto.randomUUID();
         const newBook = addBookToLibrary(title.value, author.value, pages.value, newID, formStatus.checked);
