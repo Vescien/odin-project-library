@@ -6,45 +6,48 @@ const pages = document.querySelector("#pages");
 const addBook = document.querySelector(".add-book");
 const shelf = document.querySelector(".shelf");
 const formInputs = document.querySelector("form");
+const bookStatus = document.querySelector("#status");
 
 const myLibrary = [
-    { title: 'The Hobbit', author: 'J. R. R. Tolkien', pages: '200', id: '17a29217-a893-4072-a656-2b5df81e6c4f' },
-    { title: 'A Song of Ice and Fire', author: 'George R. R. Martin', pages: '300', id: 'cc39c743-221b-4a3e-8d99-6f6cdd243563' },
+    { title: 'The Hobbit', author: 'J. R. R. Tolkien', pages: '200', id: '17a29217-a893-4072-a656-2b5df81e6c4f', status: true },
+    { title: 'A Song of Ice and Fire', author: 'George R. R. Martin', pages: '300', id: 'cc39c743-221b-4a3e-8d99-6f6cdd243563', status: false },
  ];
 
-function Book(title, author, pages, id) {
+function Book(title, author, pages, id, status) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.id = id;
+    this.status = status;
 }
 
-function addBookToLibrary(title, author, pages, id) {
-    const book = new Book(title, author, pages, id);
+function addBookToLibrary(title, author, pages, id, status) {
+    const book = new Book(title, author, pages, id, status);
     myLibrary.push(book);
     console.log(myLibrary);
+    return book;
 }
 
 function getBook(library) {
     for (const book of library) {
-        displayBook(book.title, book.author, book.pages, book.id);
+        displayBook(book);
     }
 }
 
-function displayBook(title, author, pages, id) {
+function displayBook(book) {
     const bookHTML = `
-        <div class="book-container" data-id="${id}">
+        <div class="book-container" data-id="${book.id}">
             <div class="book">
                 <p>Title</p>
-                <p class="book-text">${title}</p>
+                <p class="book-text">${book.title}</p>
                 <hr>
 
                 <p>Author</p>
-                <p class="book-text">${author}</p>
+                <p class="book-text">${book.author}</p>
                 <hr>
                 
                 <p>Pages</p>
-                <p class="book-text">${pages}</p>
+                <p class="book-text">${book.pages}</p>
             </div>
             <button class="delete">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" /></svg>
@@ -78,8 +81,8 @@ addBook.addEventListener("click", (event) => {
     event.preventDefault();
     if (title.value && author.value && pages.value) {
         let newID = crypto.randomUUID();
-        addBookToLibrary(title.value, author.value, pages.value, newID);
-        displayBook(title.value, author.value, pages.value, newID);
+        const newBook = addBookToLibrary(title.value, author.value, pages.value, newID, bookStatus.checked);
+        displayBook(newBook);
         formInputs.reset();
         form.style.display = "none";
     }
