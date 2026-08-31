@@ -86,6 +86,14 @@ function bookStatusStyle(statusContainer, formStatus) {
     }
 }
 
+pages.addEventListener("input", (event) => {
+    let num = event.target.value;
+    event.target.value = num.slice(0, 5);
+    if (event.target.value < 1) {
+        event.target.value = "";
+    } 
+})
+
 add.addEventListener("click", () => {
     form.style.display = "block";
     title.focus();

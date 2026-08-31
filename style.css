@@ -126,12 +126,17 @@ header svg {
     padding: 0.5rem;
     height: 220px;
     width: 140px;
-    overflow: hidden;
     background-color: #ffffff;
 }
 
-.book-text {
+.book p {
     font-weight: 600;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow-wrap: break-word;
 }
 
 .status-container {
