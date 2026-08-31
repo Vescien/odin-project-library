@@ -58,6 +58,7 @@ textarea:not([rows]) {
 .container {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -235,6 +236,25 @@ form button {
     padding: 0.5rem 2rem;
     border: none;
     border-radius: 6px;
+}
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    background-color: #374151;
+    height: 3rem;
+}
+
+footer a {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: #ffffff;
+}
+
+footer svg {
+    height: 2rem;
+    fill: #ffffff;
 }
 
 
