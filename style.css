@@ -95,10 +95,6 @@ header svg {
     fill: #ffffff;
 }
 
-.header-icon:hover {
-    transform: scale(1.2);
-}
-
 .shelf {
     display: grid;
     grid-template-columns: repeat(auto-fill, 140px);
@@ -156,15 +152,17 @@ header svg {
 .status-container svg {
     height: 1.5rem;
 }
-.status-container:hover {
-    cursor: pointer;
-}
 
 .checkbox-container svg {
     height: 1.5rem;
 }
 
 .delete:hover,
+#status:hover,
+.add-book:hover,
+.header-icon:hover,
+.status-container:hover,
+.close-form:hover,
 .checkbox-container:hover {
     cursor: pointer;
 }
@@ -203,9 +201,9 @@ header svg {
     top: 5px;
 }
 
-.close-form:hover {
+/* .close-form:hover {
     transform: scale(1.2);
-}
+} */
 
 .close-form svg {
     height: 1.5rem;
