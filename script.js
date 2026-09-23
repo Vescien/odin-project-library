@@ -8,18 +8,32 @@ const shelf = document.querySelector(".shelf");
 const formInputs = document.querySelector("form");
 const formStatus = document.querySelector("#status");
 
-const myLibrary = [
-    { title: 'The Hobbit', author: 'J. R. R. Tolkien', pages: '200', id: '17a29217-a893-4072-a656-2b5df81e6c4f', status: true },
-    { title: 'A Song of Ice and Fire', author: 'George R. R. Martin', pages: '300', id: 'cc39c743-221b-4a3e-8d99-6f6cdd243563', status: false },
- ]
-
-function Book(title, author, pages, id, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.id = id;
-    this.status = status;
+class Book {
+    constructor(title, author, pages, id, status) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.id = id;
+        this.status = status;
+    }
 }
+
+const myLibrary = [
+    new Book(
+        "The Hobbit",
+        "J. R. R. Tolkien",
+        "200",
+        "17a29217-a893-4072-a656-2b5df81e6c4f",
+        true
+    ),
+    new Book(
+        "A Song of Ice and Fire",
+        "George R. R. Martin",
+        "300",
+        "cc39c743-221b-4a3e-8d99-6f6cdd243563",
+        false
+    ),
+];
 
 function addBookToLibrary(title, author, pages, id, status) {
     const book = new Book(title, author, pages, id, status);
